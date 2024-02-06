@@ -7,7 +7,6 @@ def decompose_hangul(c):
     
     len_jung, len_jong = len(_jung), len(_jong)
     jong_num = c_number % len_jong
-    jung_num = (c_number // len_jong) % len_jung
-    cho_num  = (c_number // len_jong) // len_jung
-
+    cho_num, jung_num = divmod((c_number // len_jong), len_jung)
+    
     return [_cho[cho_num], _jung[jung_num], _jong[jong_num]]
